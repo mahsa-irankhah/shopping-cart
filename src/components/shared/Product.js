@@ -8,7 +8,8 @@ import { shorten, isInCart, quantityCount } from "../../helper/functions";
 import { cartContext } from "../../context/CartContextProvider";
 
 const Product = ({ productData }) => {
-  const { state, dispatch } = useContext(cartContext);
+  let {state, dispatch } = useContext(cartContext);
+  console.log(state)
 
   return (
     <div>

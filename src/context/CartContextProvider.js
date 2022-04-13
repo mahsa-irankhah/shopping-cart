@@ -66,10 +66,11 @@ export const cartContext = createContext();
 
 const CartContextProvider = ({children}) => {
     let [state, dispatch] = useReducer(cartReducer, initialState);
+    console.log(state)
 
 
     return (
-        <cartContext.Provider  value={state, dispatch}>
+        <cartContext.Provider value={{state, dispatch}}>
             {children}
         </cartContext.Provider>
     );
