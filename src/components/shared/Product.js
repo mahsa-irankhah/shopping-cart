@@ -9,7 +9,6 @@ import { cartContext } from "../../context/CartContextProvider";
 
 const Product = ({ productData }) => {
   let {state, dispatch } = useContext(cartContext);
-  console.log(state)
 
   return (
     <div>
@@ -31,12 +30,13 @@ const Product = ({ productData }) => {
       )}
       {quantityCount(state, productData.id) > 1 && (
         <button
-          onClick={() =>
-            dispatch({ type: "DECREASE", payload: productData })
-          }
+          onClick={() => dispatch({ type: "DECREASE", payload: productData })}
         >
           -
         </button>
+      )}
+      {quantityCount(state, productData.id) > 0 && (
+        <span>{quantityCount(state, productData.id)}</span>
       )}
 
       {isInCart(state, productData.id) ? (
