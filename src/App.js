@@ -16,13 +16,15 @@ function App() {
   return (
     <ProductsContextProvider>
       <CartContextProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/products/:id" element={<ProductDetails />} />
-          <Route path="/products" element={<Store />} />
-          <Route path="/cart" element={<ShopCart />} />
-          <Route path="/*" element={<Navigate to="/products" />}/>
-        </Routes>
+        <div className="mw-90">
+          <Navbar />
+          <Routes>
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/products" element={<Store />} />
+            <Route path="/cart" element={<ShopCart />} />
+            <Route path="/*" element={<Navigate to="/products" />} />
+          </Routes>
+        </div>
       </CartContextProvider>
     </ProductsContextProvider>
   );

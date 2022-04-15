@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import "./Product.css"
 
 // functions
 import { shorten, isInCart, quantityCount } from "../../helper/functions";
@@ -11,47 +12,64 @@ const Product = ({ productData }) => {
   let {state, dispatch } = useContext(cartContext);
 
   return (
-    <div>
-      <h3>{shorten(productData.title)}</h3>
-      <div>
-        <img src={productData.image} alt="product" style={{ width: "200px" }} />
+    <div className="product-div border rounded shadow">
+
+      <img src={productData.image} alt="product" style={{ width: "200px" }} />
+
+      <h3 className="pt-4 fw-bold">{shorten(productData.title)}</h3>
+
+      <p className=" text-success fs-5 mt-3">{productData.price}$</p>
+
+      <Link
+        to={`/products/${productData.id}`}
+        className="text-decoration-none fw-bold fs-5"
+      >
+        details
+      </Link>
+
+      <div className="mt-3">
+
+        {quantityCount(state, productData.id) === 1 && (
+          <button
+            className="btn btn-danger"
+            onClick={() =>
+              dispatch({ type: "REMOVE-ITEM", payload: productData })
+            }
+          >
+            remove
+          </button>
+        )}
+
+        {quantityCount(state, productData.id) > 1 && (
+          <button
+            className="btn btn-primary"
+            onClick={() => dispatch({ type: "DECREASE", payload: productData })}
+          >
+            -
+          </button>
+        )}
+
+        {quantityCount(state, productData.id) > 0 && (
+          <span className="p-3">{quantityCount(state, productData.id)}</span>
+        )}
+
+        {isInCart(state, productData.id) ? (
+          <button
+            className="btn btn-primary"
+            onClick={() => dispatch({ type: "INCREASE", payload: productData })}
+          >
+            +
+          </button>
+        ) : (
+          <button
+            className="btn btn-success"
+            onClick={() => dispatch({ type: "ADD-ITEM", payload: productData })}
+          >
+            add to cart
+          </button>
+        )}
+
       </div>
-      <p>{productData.price}$</p>
-      <Link to={`/products/${productData.id}`}>details</Link>
-
-      {quantityCount(state, productData.id) === 1 && (
-        <button
-          onClick={() =>
-            dispatch({ type: "REMOVE-ITEM", payload: productData })
-          }
-        >
-          remove
-        </button>
-      )}
-      {quantityCount(state, productData.id) > 1 && (
-        <button
-          onClick={() => dispatch({ type: "DECREASE", payload: productData })}
-        >
-          -
-        </button>
-      )}
-      {quantityCount(state, productData.id) > 0 && (
-        <span>{quantityCount(state, productData.id)}</span>
-      )}
-
-      {isInCart(state, productData.id) ? (
-        <button
-          onClick={() => dispatch({ type: "INCREASE", payload: productData })}
-        >
-          +
-        </button>
-      ) : (
-        <button
-          onClick={() => dispatch({ type: "ADD-ITEM", payload: productData })}
-        >
-          add to cart
-        </button>
-      )}
     </div>
   );
 };

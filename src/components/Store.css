@@ -1,0 +1,6 @@
+.shop-container {
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 20px;
+}

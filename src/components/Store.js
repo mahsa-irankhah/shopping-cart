@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import "./Store.css";
 
 // components
 import Product from './shared/Product';
@@ -10,7 +11,7 @@ const Store = () => {
 
     const products = useContext(productsContext)
     return (
-        <div>
+        <div className='container shop-container'>
             {products.map(item => <Product key={item.id} productData={item} />)}
         </div>
     );

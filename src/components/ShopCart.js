@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import "./ShopCart.css";
 
 //components
 import Card from './shared/Card';
@@ -13,34 +14,58 @@ const ShopCart = () => {
     
     return (
       <div>
-        {state.selectedItems.map((item) => (
-          <Card key={item.id} data={item} />
-        ))}
-
-        {state.itemsCounter > 0 && (
-          <div>
-            <p>total items: {state.itemsCounter}</p>
-            <p>total payments: {state.total}</p>
-            <div>
-              <button onClick={() => dispatch({ type: "CHECKOUT" })}>
-                checkout
-              </button>
-              <button onClick={() => dispatch({ type: "CLEAR" })}>clear</button>
-            </div>
+        <div className="cart-container d-lg-flex">
+          <div className="cart-cards w-75 d-md-block">
+            {state.selectedItems.map((item) => (
+              <Card key={item.id} data={item} />
+            ))}
           </div>
-        )}
-
+          <div className=" d-md-block">
+            {state.itemsCounter > 0 && (
+              <div className="m-5">
+                <p className="fs-4 fw-bold">
+                  total items: {state.itemsCounter}
+                </p>
+                <p className="fs-4 fw-bold">total payments: {state.total}</p>
+                <div className="d-flex justify-content-between me-5 mt-5">
+                  <button
+                    className="btn btn-success"
+                    onClick={() => dispatch({ type: "CHECKOUT" })}
+                  >
+                    checkout
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => dispatch({ type: "CLEAR" })}
+                  >
+                    clear
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
         {state.checkout && (
           <div>
-            <h3>checked out successfully</h3>
-            <Link to="/products">buy more</Link>
+            <h3 className="ms-5 fs-1 fw-bold text-success">checked out successfully!</h3>
+            <Link
+              to="/products"
+              className="btn btn-primary mt-5 ms-5 p-3 fw-bold"
+            >
+              buy more
+            </Link>
           </div>
         )}
 
         {!state.checkout && state.itemsCounter === 0 && (
           <div>
-            <h3>want to buy?</h3>
-            <Link to="/products">Go to Shop</Link>
+            <h3 className="ms-5 fs-1 fw-bold">want to buy?</h3>
+            <Link
+              to="/products"
+              className="btn btn-primary mt-5 ms-5 p-3 fw-bold"
+            >
+              Go to Shop
+            </Link>
           </div>
         )}
       </div>

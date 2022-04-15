@@ -1,0 +1,9 @@
+.cart-container {
+    margin-top: 150px;
+}
+
+.cart-cards {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    margin-bottom: 20px;
+}

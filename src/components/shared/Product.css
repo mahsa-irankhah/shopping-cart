@@ -1,0 +1,10 @@
+.product-div {
+   padding: 20px;
+}
+
+.product-div img {
+   padding: 0;
+   display: block;
+   margin: 0 auto;
+   height: 200px;
+}
