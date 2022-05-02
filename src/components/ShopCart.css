@@ -6,4 +6,21 @@
     display: grid;
     grid-template-columns: repeat(1, auto);
     margin-bottom: 20px;
+    width: 75%;
+}
+
+.payment-info {
+    padding-left: 20px;
+}
+
+.payment-info p {
+        font-size: 15px;
+    }
+
+@media (max-width:768px) {
+    .cart-cards {
+        width: 100%;
+    }
+
+    
 }

@@ -15,21 +15,21 @@ const ShopCart = () => {
     return (
       <div>
         <div className="cart-container d-lg-flex">
-          <div className="cart-cards w-75 d-md-block">
+          <div className="cart-cards d-md-block">
             {state.selectedItems.map((item) => (
               <Card key={item.id} data={item} />
             ))}
           </div>
-          <div className=" d-md-block">
+          <div className="payment-info d-md-block">
             {state.itemsCounter > 0 && (
-              <div className="m-5">
-                <p className="fs-4 fw-bold">
+              <div>
+                <p className="fw-bold">
                   total items: {state.itemsCounter}
                 </p>
-                <p className="fs-4 fw-bold">total payments: {state.total}</p>
-                <div className="d-flex justify-content-between me-5 mt-5">
+                <p className="fw-bold">total payments: {state.total}</p>
+                <div className="d-flex justify-content-evenly me-5 mt-5">
                   <button
-                    className="btn btn-success"
+                    className="btn btn-success me-5"
                     onClick={() => dispatch({ type: "CHECKOUT" })}
                   >
                     checkout
