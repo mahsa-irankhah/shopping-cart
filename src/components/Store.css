@@ -4,3 +4,17 @@
     grid-template-columns: repeat(4, auto);
     gap: 20px;
 }
+
+@media (max-width:768px) {
+    .shop-container {
+      box-sizing: border-box;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: hidden;
+    }
+}
+
+@media (max-width:480px) {
+    .shop-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}

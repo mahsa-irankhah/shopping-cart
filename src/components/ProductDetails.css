@@ -1,8 +1,8 @@
 .details-container {
     margin-top: 140px;
     padding: 0 30px;
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
 }
 
 .product-image-div {
@@ -12,4 +12,33 @@
 
 .product-info-div {
     margin: 0;
+}
+
+.back-button {
+        width: 25%;
+    }
+
+@media (max-width:768px) {
+    .product-info-div h2 {
+        font-size: 20px;
+    }
+
+    .back-button {
+        width: 300px;
+    }
+}
+
+@media (max-width:480px) {
+    .details-container {
+        flex-direction: column;
+    }
+
+    .product-image-div {
+        margin-bottom: 20px;
+    }
+
+    .product-image-div img {
+        display: block;
+        margin: 0 auto;
+    }
 }

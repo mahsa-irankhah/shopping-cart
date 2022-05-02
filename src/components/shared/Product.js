@@ -27,7 +27,7 @@ const Product = ({ productData }) => {
         details
       </Link>
 
-      <div className="mt-3">
+      <div className="quantity-buttons mt-3">
 
         {quantityCount(state, productData.id) === 1 && (
           <button
@@ -50,7 +50,7 @@ const Product = ({ productData }) => {
         )}
 
         {quantityCount(state, productData.id) > 0 && (
-          <span className="p-3">{quantityCount(state, productData.id)}</span>
+          <span className="quantitiy-count">{quantityCount(state, productData.id)}</span>
         )}
 
         {isInCart(state, productData.id) ? (

@@ -16,7 +16,7 @@ const ProductDetails = () => {
     return (
       <div className="details-container d-flex justify-content-center align-items-center">
         <div className="product-image-div">
-          <img src={image} alt="product" className="w-75" />
+          <img src={image} alt="product" className="img-fluid w-75" />
         </div>
         <div className="product-info-div border rounded p-4 w-100 h-75 shadow">
           <div>
@@ -29,7 +29,7 @@ const ProductDetails = () => {
           </div>
           <div>
             <span className='text-success fw-bold'>{price} $</span>
-            <Link to="/products" className='btn btn-primary d-block w-25 mt-3'>back to the shop</Link>
+            <Link to="/products" className='back-button btn btn-primary d-block mt-3'>back to the shop</Link>
           </div>
         </div>
       </div>
